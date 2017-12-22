@@ -1,0 +1,91 @@
+<div class="modal-header">
+    <h3 class="modal-title">Update</h3>
+</div>
+<div class="modal-body">
+    <form name="form" novalidate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Last name</th>
+                    <th>First name</th>
+                    <th>Birthdate</th>
+                    <th>Photo</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong ng-bind="$ctrl.employee.id"></strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.lastName.$invalid && form.lastName.$touched}">
+                        <input
+                            class="form-control"
+                            name="lastName"
+                            ng-model="$ctrl.employee.lastName"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.lastName.$invalid && form.lastName.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.firstName.$invalid && form.firstName.$touched}">
+                        <input
+                            class="form-control"
+                            name="firstName"
+                            ng-model="$ctrl.employee.firstName"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.firstName.$invalid && form.firstName.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.birthdate.$invalid && form.birthdate.$touched}">
+                        <p class="input-group">
+                            <input
+                                class="form-control"
+                                uib-datepicker-popup="{{'yyyy-MM-dd'}}"
+                                date-formatter
+                                name="birthdate"
+                                ng-model="$ctrl.employee.birthdate"
+                                is-open="$ctrl.isOpenPopup"
+                                close-text="Close"
+                                required
+                            />
+                            <span class="input-group-btn">
+                                <button
+                                    type="button"
+                                    class="btn btn-default"
+                                    ng-click="$ctrl.openDatepicker()">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <strong class="text-danger" ng-show="form.birthdate.$invalid && form.birthdate.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.photo.$invalid && form.photo.$touched}">
+                        <input
+                            class="form-control"
+                            name="photo"
+                            ng-model="$ctrl.employee.photo"
+                        >
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.notes.$invalid && form.notes.$touched}">
+                        <input
+                            class="form-control"
+                            name="notes"
+                            ng-model="$ctrl.employee.notes"
+                        >
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-disabled="form.$invalid" ng-click="$ctrl.update()">Update</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Close</button>
+</div>

@@ -1,0 +1,39 @@
+<h2 class="page-header">Orders</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Order date</th>
+                <th>Shipper</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in $ctrl.orders">
+                <td ng-bind="order.id"></td>
+                <td ng-bind="order.customer.customerName"></td>
+                <td ng-bind="order.employee.lastName + ' ' + order.employee.firstName"></td>
+                <td ng-bind="order.orderDate"></td>
+                <td ng-bind="order.shipper.name"></td>
+                <td>
+                    <a title="view" ng-click="$ctrl.view(order)">
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul
+        uib-pagination
+        class="pagination-md"
+        total-items="$ctrl.totalItems"
+        ng-model="$ctrl.currentPage"
+        ng-change="$ctrl.changePage()"
+        items-per-page="$ctrl.itemsPerPage"
+        max-size="5"
+        boundary-link-numbers="true"
+        rotate="false"
+    ></ul>
+</div>

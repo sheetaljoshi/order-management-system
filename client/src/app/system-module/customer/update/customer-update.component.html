@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <h3 class="modal-title">Update</h3>
+</div>
+<div class="modal-body">
+    <form name="form" novalidate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Customer name</th>
+                    <th>Contact name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Postal code</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong ng-bind="$ctrl.customer.id"></strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.customerName.$invalid && form.customerName.$touched}">
+                        <input
+                            class="form-control"
+                            name="customerName"
+                            ng-model="$ctrl.customer.customerName"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.customerName.$invalid && form.customerName.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.contactName.$invalid && form.contactName.$touched}">
+                        <input
+                            class="form-control"
+                            name="contactName"
+                            ng-model="$ctrl.customer.contactName"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.contactName.$invalid && form.contactName.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.address.$invalid && form.address.$touched}">
+                        <input
+                            class="form-control"
+                            name="address"
+                            ng-model="$ctrl.customer.address"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.address.$invalid && form.address.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.city.$invalid && form.city.$touched}">
+                        <input
+                            class="form-control"
+                            name="city"
+                            ng-model="$ctrl.customer.city"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.city.$invalid && form.city.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.postalCode.$invalid && form.postalCode.$touched}">
+                        <input
+                            class="form-control"
+                            name="postalCode"
+                            ng-model="$ctrl.customer.postalCode"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.postalCode.$invalid && form.postalCode.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group" ng-class="{'has-error': form.country.$invalid && form.country.$touched}">
+                        <input
+                            class="form-control"
+                            name="country"
+                            ng-model="$ctrl.customer.country"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.country.$invalid && form.country.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-disabled="form.$invalid" ng-click="$ctrl.update()">Update</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Close</button>
+</div>

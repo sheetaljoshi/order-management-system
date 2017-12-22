@@ -1,0 +1,68 @@
+-- TABLE
+CREATE TABLE categories (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255)
+);
+
+CREATE TABLE customers (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  customer_name VARCHAR(255) NOT NULL,
+  contact_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE employees (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  last_name VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  birthdate DATE NOT NULL,
+  photo VARCHAR(255),
+  notes TEXT
+);
+
+CREATE TABLE shippers (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  phone VARCHAR(255)
+);
+
+CREATE TABLE suppliers (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  contact_name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(255) NOT NULL,
+  postal_code VARCHAR(255) NOT NULL,
+  country VARCHAR(255) NOT NULL,
+  phone VARCHAR(255)
+);
+
+CREATE TABLE products (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  supplier_id INT NOT NULL REFERENCES suppliers(id),
+  category_id INT NOT NULL REFERENCES categories(id),
+  unit VARCHAR(255) NOT NULL,
+  price DECIMAL(15,2) NOT NULL
+);
+
+CREATE TABLE orders (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  customer_id INT NOT NULL REFERENCES customers(id),
+  employee_id INT NOT NULL REFERENCES employees(id),
+  order_date DATE NOT NULL,
+  shipper_id INT NOT NULL REFERENCES shippers(id)
+);
+
+CREATE TABLE order_details (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  order_id INT NOT NULL REFERENCES orders(id),
+  product_id INT NOT NULL REFERENCES products(id),
+  quantity INT NOT NULL
+);
+
+-- INDEX

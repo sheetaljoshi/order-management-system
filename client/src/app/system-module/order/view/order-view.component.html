@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        Order #
+        <span ng-bind="$ctrl.order.id"></span>
+    </h3>
+</div>
+<div class="modal-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Order date</th>
+                <th>Shipper</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ng-bind="$ctrl.order.customer.customerName"></td>
+                <td ng-bind="$ctrl.order.employee.lastName + ' ' + $ctrl.order.employee.firstName"></td>
+                <td ng-bind="$ctrl.order.orderDate"></td>
+                <td ng-bind="$ctrl.order.shipper.name"></td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Order details</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="orderDetail in $ctrl.order.orderDetails">
+                <td ng-bind="$index + 1"></td>
+                <td ng-bind="orderDetail.product.name"></td>
+                <td ng-bind="orderDetail.quantity"></td>
+                <td ng-bind="orderDetail.product.price"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <strong ng-bind="$ctrl.totalPrice"></strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Close</button>
+</div>

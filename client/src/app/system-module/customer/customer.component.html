@@ -1,0 +1,58 @@
+<h2 class="page-header">Customers</h2>
+<div
+    uib-alert
+    ng-class="'alert alert-' + $ctrl.alert.type"
+    ng-if="$ctrl.alert"
+    close="$ctrl.closeMessage()"
+    dismiss-on-timeout="2500"
+    ng-bind="$ctrl.alert.message"
+></div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Customer name</th>
+                <th>Contact name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Postal code</th>
+                <th>Country</th>
+                <th>
+                    <a title="create" ng-click="$ctrl.create()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="customer in $ctrl.customers | limitTo: $ctrl.itemsPerPage : ($ctrl.currentPage - 1) * $ctrl.itemsPerPage">
+                <td ng-bind="customer.id"></td>
+                <td ng-bind="customer.customerName"></td>
+                <td ng-bind="customer.contactName"></td>
+                <td ng-bind="customer.address"></td>
+                <td ng-bind="customer.city"></td>
+                <td ng-bind="customer.postalCode"></td>
+                <td ng-bind="customer.country"></td>
+                <td>
+                    <a title="update" ng-click="$ctrl.update(customer)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a title="delete" ng-click="$ctrl.remove(customer)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul
+        uib-pagination
+        class="pagination-md"
+        total-items="$ctrl.customers.length"
+        ng-model="$ctrl.currentPage"
+        items-per-page="$ctrl.itemsPerPage"
+        max-size="5"
+        boundary-link-numbers="true"
+        rotate="false"
+    ></ul>
+</div>

@@ -1,0 +1,41 @@
+<header class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <span class="navbar-brand">System console</span>
+        <ul class="nav navbar-nav pull-right">
+            <li><a ui-sref="greeting">to greeting page</a></li>
+        </ul>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <aside class="col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li ui-sref-active="active">
+                    <a ui-sref="system.order">Orders</a>
+                </li>
+                <hr />
+                <li ui-sref-active="active">
+                    <a ui-sref="system.category">Categories</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="system.shipper">Shippers</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="system.supplier">Suppliers</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="system.customer">Customers</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="system.employee">Employees</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="system.product">Products</a>
+                </li>
+            </ul>
+        </aside>
+        <main class="col-sm-10">
+            <ui-view></ui-view>
+        </main>
+    </div>
+</div>

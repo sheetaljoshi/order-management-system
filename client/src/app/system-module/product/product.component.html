@@ -1,0 +1,56 @@
+<h2 class="page-header">Products</h2>
+<div
+    uib-alert
+    ng-class="'alert alert-' + $ctrl.alert.type"
+    ng-if="$ctrl.alert"
+    close="$ctrl.closeMessage()"
+    dismiss-on-timeout="2500"
+    ng-bind="$ctrl.alert.message"
+></div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Supplier</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Price</th>
+                <th>
+                    <a title="create" ng-click="$ctrl.create()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in $ctrl.products | limitTo: $ctrl.itemsPerPage : ($ctrl.currentPage - 1) * $ctrl.itemsPerPage">
+                <td ng-bind="product.id"></td>
+                <td ng-bind="product.name"></td>
+                <td ng-bind="product.supplier.name"></td>
+                <td ng-bind="product.category.name"></td>
+                <td ng-bind="product.unit"></td>
+                <td ng-bind="product.price"></td>
+                <td>
+                    <a title="update" ng-click="$ctrl.update(product)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a title="delete" ng-click="$ctrl.remove(product)">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul
+        uib-pagination
+        class="pagination-md"
+        total-items="$ctrl.products.length"
+        ng-model="$ctrl.currentPage"
+        items-per-page="$ctrl.itemsPerPage"
+        max-size="5"
+        boundary-link-numbers="true"
+        rotate="false"
+    ></ul>
+</div>

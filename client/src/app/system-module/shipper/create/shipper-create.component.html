@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h3 class="modal-title">Create</h3>
+</div>
+<div class="modal-body">
+    <form name="form" novalidate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="form-group" ng-class="{'has-error': form.name.$invalid && form.name.$touched}">
+                        <input
+                            class="form-control"
+                            name="name"
+                            ng-model="$ctrl.shipper.name"
+                            required
+                        >
+                        <strong class="text-danger" ng-show="form.name.$invalid && form.name.$touched">
+                            Field can't be empty
+                        </strong>
+                    </td>
+                    <td class="form-group">
+                        <input
+                            class="form-control"
+                            name="pgone"
+                            ng-model="$ctrl.shipper.phone"
+                        >
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-disabled="form.$invalid" ng-click="$ctrl.create()">Create</button>
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.close()">Close</button>
+</div>
